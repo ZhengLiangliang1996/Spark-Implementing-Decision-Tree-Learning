@@ -11,40 +11,41 @@ For running on Cluster, a jar file is needed here, detailed is in the Prerequisi
 
 ### Prerequisites
 
+```
+scalaVersion := "2.11.12"
+
+libraryDependencies += "org.apache.spark" % "spark-core_2.11" % "2.4.0"
+libraryDependencies += "org.apache.spark" % "spark-sql_2.11" % "2.4.0"
+```
+
 Data could be found here: https://s3.amazonaws.com/amazon-reviews-pds/tsv/index.txt
 
-```
-Give examples
-```
 
 ### Installing
 
 Run it locally: drag sample data and run it on Intelli J IDEA
 
+Run it on cluster(Jar file gernerated): 
 
-Say what the step will be
+Change main class file name in build.sbt to the file name you have
 
+for example: 
 ```
-Give the example
+mainClass in Compile := Some("BigDataProject")
 ```
-
-And repeat
-
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-
+mainClass in assembly := Some("BigDataProject")
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+And run the following command in sbt shell
 
 ```
-Give an example
+clean
+compile
+assembly
+```
+
+You will then found a jar file named project.jar in your project folder.
 
 
 ## Acknowledgments
